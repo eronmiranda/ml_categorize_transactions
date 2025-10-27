@@ -4,7 +4,13 @@ from sklearn.model_selection import train_test_split  # pylint: disable=E0401
 from sklearn.feature_extraction.text import TfidfVectorizer  # pylint: disable=E0401
 from sklearn.linear_model import LogisticRegression  # pylint: disable=E0401
 from sklearn.metrics import classification_report  # pylint: disable=E0401
-import joblib
+import joblib  # pylint: disable=E0401
+
+
+def verify_file_exists(file_path: str) -> bool:
+    """Check if a file exists at the given path"""
+    path = Path(file_path)
+    return path.exists() and path.is_file()
 
 
 def import_data(dir_name: str) -> pd.DataFrame:
@@ -74,6 +80,7 @@ def create_and_train_model(x_train, y_train, max_features=5000) -> tuple:
 
 def evaluate_model(model, vectorizer, x_test, y_test) -> str:
     """Evaluate the model and print classification report"""
+    print("Evaluating the model data...")
     x_test_tfidf = vectorizer.transform(x_test)
     predictions = model.predict(x_test_tfidf)
 
@@ -82,12 +89,14 @@ def evaluate_model(model, vectorizer, x_test, y_test) -> str:
 
 def save_model(model, vectorizer, model_path: str, vectorizer_path: str) -> None:
     """Save the trained model and vectorizer"""
+    print("Saving the model and vectorizer...")
     joblib.dump(model, model_path)
     joblib.dump(vectorizer, vectorizer_path)
 
 
 def load_model(model_path: str, vectorizer_path: str) -> tuple:
     """Load the trained model and vectorizer from disk"""
+    print("Loading the model and vectorizer...")
     model = joblib.load(model_path)
     vectorizer = joblib.load(vectorizer_path)
     return model, vectorizer
