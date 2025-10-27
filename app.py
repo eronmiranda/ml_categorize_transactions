@@ -1,4 +1,15 @@
-from utils import verify_file_exists, import_data, clean_data, prepare_data, create_and_train_model, evaluate_model, save_model, load_model
+"""Main application file for training and evaluating the transaction categorization model."""
+
+from utils import (
+    verify_file_exists,
+    import_data,
+    clean_data,
+    prepare_data,
+    create_and_train_model,
+    evaluate_model,
+    save_model,
+    load_model,
+)
 
 
 # Designed for AMEX Year End Summary format.

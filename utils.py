@@ -1,3 +1,5 @@
+"""Utility functions for data handling, model training, evaluation, and persistence."""
+
 from pathlib import Path
 import pandas as pd
 from sklearn.model_selection import train_test_split
