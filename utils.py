@@ -4,6 +4,7 @@ from sklearn.model_selection import train_test_split  # pylint: disable=E0401
 from sklearn.feature_extraction.text import TfidfVectorizer  # pylint: disable=E0401
 from sklearn.linear_model import LogisticRegression  # pylint: disable=E0401
 from sklearn.metrics import classification_report  # pylint: disable=E0401
+import joblib
 
 
 def import_data(dir_name: str) -> pd.DataFrame:
@@ -77,3 +78,16 @@ def evaluate_model(model, vectorizer, x_test, y_test) -> str:
     predictions = model.predict(x_test_tfidf)
 
     return classification_report(y_test, predictions)
+
+
+def save_model(model, vectorizer, model_path: str, vectorizer_path: str) -> None:
+    """Save the trained model and vectorizer"""
+    joblib.dump(model, model_path)
+    joblib.dump(vectorizer, vectorizer_path)
+
+
+def load_model(model_path: str, vectorizer_path: str) -> tuple:
+    """Load the trained model and vectorizer from disk"""
+    model = joblib.load(model_path)
+    vectorizer = joblib.load(vectorizer_path)
+    return model, vectorizer

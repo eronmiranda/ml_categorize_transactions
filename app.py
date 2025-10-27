@@ -1,4 +1,4 @@
-from utils import import_data, clean_data, prepare_data, create_and_train_model, evaluate_model
+from utils import import_data, clean_data, prepare_data, create_and_train_model, evaluate_model, save_model
 
 
 # Designed for AMEX Year End Summary format.
@@ -12,6 +12,9 @@ def main():
     x_train, x_test, y_train, y_test = prepare_data(cleaned_data)
     # create a model
     model, vectorizer = create_and_train_model(x_train, y_train)
+    # save the model and vectorizer
+    save_model(model, vectorizer, 'transaction_categorizer.joblib',
+               'vectorizer.joblib')
     # evaluate the model
     print(evaluate_model(model, vectorizer, x_test, y_test))
 

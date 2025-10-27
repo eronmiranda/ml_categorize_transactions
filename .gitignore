@@ -2,3 +2,6 @@ results/
 year_end_summaries/
 .mypy_cache/
 __pycache__/
+
+transaction_categorizer.joblib
+vectorizer.joblib
