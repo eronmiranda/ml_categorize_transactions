@@ -1,10 +1,10 @@
 from pathlib import Path
-import pandas as pd  # pylint: disable=E0401
-from sklearn.model_selection import train_test_split  # pylint: disable=E0401
-from sklearn.feature_extraction.text import TfidfVectorizer  # pylint: disable=E0401
-from sklearn.linear_model import LogisticRegression  # pylint: disable=E0401
-from sklearn.metrics import classification_report  # pylint: disable=E0401
-import joblib  # pylint: disable=E0401
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import classification_report
+import joblib
 
 
 def verify_file_exists(file_path: str) -> bool:
